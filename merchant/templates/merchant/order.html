@@ -1,0 +1,26 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <section id="smart-watches" class="product-store padding-large position-relative">
+        <h1>Pending Orders</h1>
+        <div class="card">
+            {% for trans in transaction %}
+                <p>{{trans.name}} placed an order for {{trans.product}}</p>
+                <p>Quantity: {{trans.quantity}}</p>
+                <p>Price - {{trans.price}}</p>
+                <div>
+                    <form action="" method="POST" class="form-control">
+                        {% csrf_token %}
+                        <label for="">Set Delivery Date</label>
+                        <input type="date" name="date" id="" class="form-control"><br>
+                        <button class="btn btn-success" name="approve">Approve</button>  
+                        <button class="btn btn-danger" name="cancel">Cancel Order</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

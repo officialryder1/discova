@@ -1,0 +1,66 @@
+{% extends 'store/base.html' %}
+{% block content%}
+<div class="position-relative overflow-hidden bg-light-blue padding-large">
+    <div class="container">
+        <h1 class="display-2 text-uppercase text-dark pb-5">Profile</h1>
+        <h3>Welcome {{request.user|upper}}</h3><br>
+        <a href="" class="btn btn-primary">Edit Profile</a> | <a href="" class="btn sm btn-primary">Edit Biling </a> | 
+        {% if shipping %}
+        <a href="{% url 'update_info' %}" class="btn sm btn-primary">Edit Shipping</a>
+        {% else %}
+        <a href="{% url 'checkout_form' %}" class="btn sm btn-primary">Upload Shipping</a>
+        {% endif %}
+        <hr>
+        <div class="card">
+            <div class="card-header">
+              Billing Info
+            </div>
+            <div class="card-body">
+              
+            </div>
+        </div><br>
+        <div class="card">
+            <div class="card-header">
+              Shipping Info
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="{{ shipping.full_name}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.email}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Number</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.number}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">address 1</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.address_1}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">address 2</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.address_2}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">City</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.city}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">State</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.state}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Country</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.country}}">
+                    </div>
+            
+                </div><br>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

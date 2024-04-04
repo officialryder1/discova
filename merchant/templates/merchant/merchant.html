@@ -1,0 +1,55 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container">
+    <h1 class="card-title text-uppercase text-dark">Create Profile </h1><br>
+            
+    <form action="" class="form-control" method="POST" enctype="multipart/form-data">
+        {% csrf_token%} <br>
+        <div class="container">
+            <div class="input-group mb-3">
+                {{form.image}}
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Address</label>
+                <!-- <textarea type="text" class="form-control" id="formGroupExampleInput2" placeholder="Product Description" name="" id="" cols="10" rows="5"></textarea> -->
+                {{form.address}}
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-10">
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput"> -->
+                {{form.city}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-10">
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput"> -->
+                {{form.state}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">country</label>
+                <div class="col-sm-10">
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput"> -->
+                {{form.country}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Phone No</label>
+                <div class="col-sm-10">
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput"> -->
+                {{form.phone}}
+                </div>
+            </div>
+           
+        </div><br>
+        <button class="btn btn-primary" style="margin: 0 auto; display: block;">Upload</button>
+    </form><br><br><br>
+</div><br>
+
+
+{% endblock %}

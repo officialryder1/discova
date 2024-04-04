@@ -1,0 +1,87 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="containe ">
+    <form action="" class="form-control" method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="container">
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Title</label>
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Product Name"> -->
+                {{form.name}}
+            </div>
+            <div class="input-group mb-3">
+                {{form.image}}
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Description</label>
+                <!-- <textarea type="text" class="form-control" id="formGroupExampleInput2" placeholder="Product Description" name="" id="" cols="10" rows="5"></textarea> -->
+                {{form.description}}
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Specification <i class="lead">( optional )</i></label>
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Product Specification"> -->
+                {{form.specification}}
+            </div>
+            
+            
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Color</label>
+                <div class="col-sm-10">
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput"> -->
+                {{form.color}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Stock</label>
+                <div class="col-sm-10">
+                <!-- <input type="number" class="form-control" id="formGroupExampleInput"> -->
+                {{form.stock}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput"> -->
+                {{form.category}}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Location</label>
+                <div class="col-sm-10">
+                <!-- <input type="text" class="form-control" id="formGroupExampleInput"> -->
+                {{form.location}}
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">Price</span>
+                <!-- <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"> -->
+                {{form.price}}
+            </div>
+            <div class="form-check form-switch">
+                <!-- <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"> -->
+                {{form.is_available}}
+                <label class="form-check-label" for="flexSwitchCheckDefault">Product is Avalable</label>
+            </div>
+            <div class="form-check form-switch">
+                <!-- <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"> -->
+                {{form.is_sale}}
+                <label class="form-check-label" for="flexSwitchCheckDefault">Discount</label>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text"> Discount Price</span>
+                <!-- <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"> -->
+                {{form.sale_price}}
+            </div>
+        </div><br>
+    
+        <button class="btn btn-primary" style="margin: 0 auto; display: block;">Upload</button>
+    </form><br><br><br>
+</div><br>
+
+
+{% endblock %}

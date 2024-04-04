@@ -1,0 +1,61 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+<section id="smart-watches" class="product-store padding-large position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="display-header d-flex justify-content-between pb-3">
+          <h2 class="display-7 text-dark text-uppercase">Checkout </h2>
+          <p>Review Your Order</p>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-header">
+                Order Summary
+             </div>
+             <div class="card-body">
+              {% for product in cart_product %}
+                {{product.name}}
+                {% if product.is_sale %}
+                  ${{product.sale_price}}
+                {% else %}
+                  ${{product.price}}
+                {% endif %}
+                <br>
+                <small>Quantity: 
+                {% for key, value in quantities.items %}
+                  {% if key == product.id|slugify %}
+                    {{value}}
+                  {% endif%}
+                {% endfor %}</small>
+                <br><br>
+              {% endfor %}
+             </div>
+             <a href="{% url 'cart' %}" class="btn sm btn-outline-success">Update Items</a>
+             <br><br><hr>
+             <h3>Total: ${{total}}</h3>
+             <br>
+            </div>
+            <div class="col-md-6">
+              <div class="card-header">
+                Shipping Info
+             </div>
+             <div class="card-body">
+             <form action="" method="POST">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button class="btn btn-success">Update</button>
+             </form> 
+            </div>
+          </div>
+          
+          <a href="#" class="btn btn-outline-danger">Continue To Billing</a>
+
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}
