@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-usxcr0-6x7wdor+ucq)=-n9++o(8o85tvp*(4+obm1pd&)jgd2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://127.0.0.1:8000/','.vercel.app']
 
 
 # Application definition
@@ -138,3 +138,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+WSGI_APPLICATION = 'vercel_app.wsgi.app'
