@@ -68,6 +68,7 @@ def get_order(request):
     merchant = Merchant.objects.get(author=user)
     product = Product.objects.filter(owner=merchant)
     transaction = Transaction.objects.filter(product__in=product)
+    shipping = ShippingAddress.objects.get(address_1=transaction)
     
     
     if request.method == 'POST':
@@ -84,7 +85,8 @@ def get_order(request):
         'user':user,
         'merchant':merchant,
         'product':product,
-        'transaction':transaction
+        'transaction':transaction,
+        
     }
 
     return render(request, 'merchant/order.html', context)
