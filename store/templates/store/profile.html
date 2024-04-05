@@ -16,7 +16,43 @@
               Billing Info
             </div>
             <div class="card-body">
-              
+                <div class="card-body">
+                    <div class="container">
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="{{ request.user}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.email}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Number</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.number}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">address 1</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.address_1}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">address 2</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.address_2}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">City</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.city}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">State</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.state}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Country</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{shipping.country}}">
+                        </div>
+                
+                    </div><br>
+                </div>
             </div>
         </div><br>
         <div class="card">

@@ -1,0 +1,79 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+    <a href="{% url 'merchant_dashboard' %}" class="btn btn-danger"><- Back</a>
+    <br>  <p class="text-center">All Your Project </p>
+    <hr>
+    
+    
+    
+    <div class="card">
+    <table class="table table-hover shopping-cart-wrap">
+    <thead class="text-muted">
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col" width="120">Quantity</th>
+      <th scope="col" width="120">Price</th>
+      <th scope="col" width="200" class="text-right">Action</th>
+    </tr>
+    </thead>
+    {% for product in product %}
+    <tbody>
+    <tr>
+    <td>
+    <figure class="media">
+        <div class="img-wrap"><img src="{{product.image.url }}" class="img-thumbnail img-sm" ></div>
+        <figcaption class="media-body">
+            <h6 class="title text-truncate">{{product.name}} </h6>
+            <dl class="param param-inline small">
+              <dt>Stock: </dt>
+              <dd>{{product.stock}}</dd>
+            </dl>
+            <dl class="param param-inline small">
+              <dt>Color: </dt>
+              <dd>{{product.color}}</dd>
+            </dl>
+        </figcaption>
+    </figure> 
+        </td>
+        <td> 
+            <select class="form-control">
+                <option>1</option>
+                <option>2</option>	
+                <option>3</option>	
+                <option>4</option>	
+            </select> 
+        </td>
+        <td> 
+            <div class="price-wrap"> 
+                <var class="price">
+                    {% if product.is_sale %}
+                        <strike>
+                            ${{product.price}}
+                        </strike>
+                        ${{ product.sale_price }}
+                    {% else %}
+                        ${{product.price}}
+                    {% endif %}
+                </var> 
+                <!-- <small class="text-muted">(USD15 each)</small>  -->
+            </div> <!-- price-wrap .// -->
+        </td>
+        <td class="text-right"> 
+            <a href="{% url 'update' product.id %}" href="" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Save to Wishlist"> <i class="fa fa-heart"></i>Edit</a> 
+            <a href="{% url 'delete_product' product.id %}" class="btn btn-outline-danger btn-round"> × Remove</a>
+        </td>
+    </tr>
+    </tbody>
+    {% endfor %}
+    </table>
+    </div> <!-- card.// -->
+    
+    </div> 
+    <!--container end.//-->
+    
+    <br><br>
+{% endblock %}

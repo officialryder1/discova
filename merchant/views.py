@@ -51,6 +51,7 @@ def merchant_dashboard(request):
     product = Product.objects.filter(owner=merchant)
     transaction = Transaction.objects.filter(product__in=product)
     order = Completed_order.objects.filter(user=merchant)
+    count = len(transaction) - 1
     
 
     context = {
@@ -58,17 +59,19 @@ def merchant_dashboard(request):
         'merchant':merchant,
         'product':product,
         'transaction':transaction,
-        'order':order
+        'order':order,
+        'count':count
     }
 
     return render(request, 'merchant/merchant_dashboard.html', context)
 
 def get_order(request):
     user = request.user
+    users = User.objects.get(username=user)
     merchant = Merchant.objects.get(author=user)
     product = Product.objects.filter(owner=merchant)
-    transaction = Transaction.objects.filter(product__in=product)
-    shipping = ShippingAddress.objects.get(address_1=transaction)
+    transaction = Transaction.objects.filter(product__in=product).order_by('product')
+    shipping = ShippingAddress.objects.filter(user=users)
     
     
     if request.method == 'POST':
@@ -86,8 +89,22 @@ def get_order(request):
         'merchant':merchant,
         'product':product,
         'transaction':transaction,
+        'shipping':shipping
         
     }
 
     return render(request, 'merchant/order.html', context)
+
+def merchant_product(request):
+    user = request.user
+    merchant = Merchant.objects.get(author=user)
+    product = Product.objects.filter(owner=merchant)
+
+    content = {
+        'user':user,
+        'merchant':merchant,
+        'product':product
+    }
+
+    return render(request, 'merchant/product.html', content)
     

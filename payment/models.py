@@ -58,6 +58,7 @@ class Transaction(models.Model):
     def __str__(self):
         return f"Order Item - {str(self.name)}"
     
+    
 class Completed_order(models.Model):
     user = models.ForeignKey(Merchant, on_delete=models.CASCADE)
     transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
@@ -65,3 +66,5 @@ class Completed_order(models.Model):
     def __str__(self):
         return str(self.user)
 
+class BillingAddress(models.Model):
+    pass

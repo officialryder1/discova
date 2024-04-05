@@ -5,12 +5,23 @@
 <div class="container">
     <section id="smart-watches" class="product-store padding-large position-relative">
         <h1>Pending Orders</h1>
+        <a href="{% url 'merchant_dashboard' %}" class="btn  btn-outline-danger">Go Back</a><br>
         <div class="card">
             {% for trans in transaction %}
+                
                 <p>{{trans.name}} placed an order for {{trans.product}}</p>
                 <p>Quantity: {{trans.quantity}}</p>
                 <p>Price - {{trans.price}}</p>
-                <p>Address: {{</p>
+                <h3>User Contact</h3>
+                {% for shipping in shipping %}
+                <p>Phone: +234 {{shipping.number}}</p>
+                <p>Email: {{shipping.email}}</p>
+                <p>Address: {{shipping.address_1}}</p>
+                <p>Address 2: {{shipping.address_2}}</p>
+                <p>City: {{shipping.city}}</p>
+                <p>State: {{shipping.state}}</p>
+
+                {% endfor %}
                 <div>
                     <form action="" method="POST" class="form-control">
                         {% csrf_token %}
