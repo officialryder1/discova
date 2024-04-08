@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Merchant
 from store.models import Product, Category
 from payment.models import ShippingAddress, Order, Transaction, Completed_order
-from .form import Merchant_form
+from .form import Merchant_form, MessageAdmin_form
 from payment.form import TransactionForm
 from django.contrib.auth.models import User
 
@@ -107,4 +107,19 @@ def merchant_product(request):
     }
 
     return render(request, 'merchant/product.html', content)
+
+def send_message(request):
+    if request.method == 'POST':
+        form = MessageAdmin_form(request.POST, request.FILES)
+        if form.is_valid():
+            author = form.save(commit=False)
+            author.user = request.user
+            author.save()
+            return redirect("merchant_dashboard")
+    else:
+        form = MessageAdmin_form()
+    context = {
+        'form':form
+    }
+    return render(request, "merchant/send_feedback.html", context)
     

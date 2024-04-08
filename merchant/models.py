@@ -13,3 +13,14 @@ class Merchant(models.Model):
 
     def __str__(self):
         return str(self.author)
+
+
+class MessageAdmin(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    detail = models.CharField(max_length=50)
+    message = models.TextField()
+    image = models.ImageField(upload_to='M2A_message', null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.detail + " - " + " Message Sent By " + str(self.user)

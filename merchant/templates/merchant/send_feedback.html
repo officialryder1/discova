@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container">
+    <h1 class="card-title text-uppercase text-dark">Create Profile </h1><br>
+            
+    <form action="" class="form-control" method="POST" enctype="multipart/form-data">
+        {% csrf_token%} <br>
+        {{form.as_p}}
+        <button class="btn btn-primary" style="margin: 0 auto; display: block;">Upload</button>
+    </form><br><br><br>
+</div><br>
+
+
+{% endblock %}

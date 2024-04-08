@@ -91,7 +91,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse("postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova")
+#DATABASES['default'] = dj_database_url.parse("postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova")
 # postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova
 
 
