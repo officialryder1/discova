@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Merchant
+from .models import Merchant, MessageAdmin
 from store.models import Product, Category
 from payment.models import ShippingAddress, Order, Transaction, Completed_order
 from .form import Merchant_form, MessageAdmin_form
@@ -31,6 +31,7 @@ def dashboard(request):
     users = User.objects.all()
     recent_joint_user = User.objects.all().order_by("-date_joined")[:5]
     product_added = Product.objects.all()[:5]
+    message = MessageAdmin.objects.all()
 
     context = {
         'product':product,
@@ -42,6 +43,7 @@ def dashboard(request):
         'users':users,
         'recent':recent_joint_user,
         'added_product':product_added,
+        'message':message,
     }
     return render(request, 'merchant/dashboad.html', context)
 
@@ -123,3 +125,18 @@ def send_message(request):
     }
     return render(request, "merchant/send_feedback.html", context)
     
+def view_message(request):
+    message = MessageAdmin.objects.all()
+
+    content = {
+        'message':message
+    }
+    return render(request, 'merchant/view_messages.html', content)
+
+def message_detail(request, pk):
+    message = MessageAdmin.objects.get(id=pk)
+    
+    content = {
+        'message':message
+    }
+    return render(request, "merchant/message_detail.html", content)

@@ -1,0 +1,25 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container">
+    <h1 class="card-title text-uppercase text-dark">{{message.user}}</h1><br>
+    <div class="container">       
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="no-gutters align-items-center">
+                <div class="">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        {{message.detail}}</div><br>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ message.message}}</div>
+                    <small>{{message.date}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><br>
+</div><br>
+
+
+{% endblock %}

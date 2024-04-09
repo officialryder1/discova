@@ -7,6 +7,8 @@ urlpatterns = [
     path('merchant_dashboard', merchant_dashboard, name='merchant_dashboard'),
     path('order', get_order, name='order'),
     path('product', merchant_product, name='product'),
-    path("send_feedback", send_message, name="send-message")
+    path("send_feedback", send_message, name="send-message"),
+    path('admin/view-message', view_message, name='admin-feedback'),
+    path('message/<int:pk>/detail', message_detail, name="message_detail")
 
 ]

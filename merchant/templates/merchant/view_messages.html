@@ -1,0 +1,29 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container">
+    <h1 class="card-title text-uppercase text-dark">Messages </h1><br>
+    {% for message in message %}
+    <div class="container">       
+        <a href="{%url 'message_detail' message.id %}"><div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            {{message.user}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ message.detail}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div></a>
+    </div><br>
+    {% endfor %}
+</div><br>
+
+
+{% endblock %}

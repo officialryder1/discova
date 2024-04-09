@@ -24,3 +24,14 @@ class MessageAdmin(models.Model):
 
     def __str__(self):
         return self.detail + " - " + " Message Sent By " + str(self.user)
+    
+
+class Reply(models.Model):
+    user = models.ForeignKey(MessageAdmin, on_delete=models.CASCADE)
+    message = models.TextField()
+    image = models.ImageField(upload_to='M2A_message', null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "You Replied " + str(self.user)
+    
