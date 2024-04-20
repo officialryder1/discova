@@ -9,6 +9,7 @@ urlpatterns = [
     path('category/<str:cat>', category, name='category'),
     path('search', search, name='search'),
     path('profile', Profile, name="profile"),
+    path('about', about, name='about'),
 
     # User vendor autherntication url calls
     path('login', login_user, name='login'),

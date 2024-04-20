@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<br><br><br><br><br>
+{% for company in company %}
+<h1>{{company.name}}</h1><br>
+<div class="container">
+    <small class="lead">Company Detail</small>
+    <p>Headquarter: {{company.headquater}}</p>
+    <p>Country: {{company.country}}</p>
+    <p>State: {{company.state}}</p>
+    <p>Email: {{company.email}}</p>
+    <p>Phone: +234{{company.phone}}</p>
+    <small class="lead">About Us</small>
+    <p>{{ company.description|safe }}</p><br>
+</div><br><br>
+{% endfor %}
+{% endblock %}

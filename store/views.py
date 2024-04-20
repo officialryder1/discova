@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Category
+from .models import Product, Category, CompanyProfile
 from merchant.models import Merchant
 from payment.models import ShippingAddress
 from .form import RegisterUser
@@ -171,4 +171,12 @@ def Profile(request):
             return render(request, 'store/profile.html')
     except:
         return render(request, 'store/profile.html')
+    
+
+def about(request):
+    company = CompanyProfile.objects.all()
+    context = {
+        'company':company
+    }
+    return render(request, 'store/about.html', context)
     

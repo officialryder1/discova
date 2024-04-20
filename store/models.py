@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from merchant.models import Merchant
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -33,3 +34,24 @@ class Product(models.Model):
     def line_total(self):
         return self.stock * self.price
 
+class CompanyProfile(models.Model):
+    name = models.CharField(max_length=50)
+    logo = models.ImageField(upload_to='company_logo')
+    owner = models.CharField(max_length=50)
+    owner_image = models.ImageField(upload_to='company_logo')
+    co_owner = models.CharField(max_length=50, blank=True, null=True)
+    co_owner_image = models.ImageField(upload_to='company_logo', null=True, blank=True)
+    headquater = models.CharField(max_length=50, blank=True, null=True)
+    country = models.CharField(max_length=50, blank=True, null=True)
+    state = models.CharField(max_length=50, blank=True, null=True)
+    description = RichTextField()
+    email = models.EmailField(max_length=100)
+    phone = models.FloatField()
+    staff = models.IntegerField()
+    instagram = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    facebook = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
