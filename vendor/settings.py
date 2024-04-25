@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # installed apps
     'store',
     'cart',
@@ -93,7 +92,7 @@ DATABASES = {
     }
 }
 
-#DATABASES['default'] = dj_database_url.parse("postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova")
+DATABASES['default'] = dj_database_url.parse(config("POSTGRES"))
 # postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova
 
 
@@ -148,3 +147,12 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AWS_ACCESS_KEY_ID = config("MY_ACCESS_KEY")
+AWS_SECRET_ACCESS_KEY = config("MY_SECRET_KEY")
+AWS_STORAGE_BUCKET_NAME = "discova"
+AWS_S3_SIGNATURE_NAME = "s3v4"
+AWS_S3_REGION_NAME = "us-east-1"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
