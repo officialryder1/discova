@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('THE_SECRET_KEY')
+SECRET_KEY = 'django-insecure-usxcr0-6x7wdor+ucq)=-n9++o(8o85tvp*(4+obm1pd&)jgd2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,7 +92,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse(config("POSTGRES"))
+DATABASES['default'] = dj_database_url.parse("postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova")
 # postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova
 
 
@@ -147,8 +147,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AWS_ACCESS_KEY_ID = config("MY_ACCESS_KEY")
-AWS_SECRET_ACCESS_KEY = config("MY_SECRET_KEY")
+AWS_ACCESS_KEY_ID = "AKIA2NTYD4FPENKWIR6J"
+AWS_SECRET_ACCESS_KEY = "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"
 AWS_STORAGE_BUCKET_NAME = "discova"
 AWS_S3_SIGNATURE_NAME = "s3v4"
 AWS_S3_REGION_NAME = "us-east-1"
