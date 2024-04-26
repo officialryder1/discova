@@ -1,22 +1,27 @@
 {% extends 'store/base.html' %}
 {% block content%}
 
-{% if form.error %}
+<div class="container">
+    {% if form.error %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         There was an error with your form
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-{% endif %}
-        <h1>Register</h1><br>
-        <hr>
-        
-        <form action="{% url 'register' %}" method="POST" class="container">
-            {% csrf_token %}
-
-            {{ form.as_p}}
-                
-            <br><br><input type="submit" value="submit" class="btn btn-secondary">
-        </form>
+    {% endif %}
+    <h1>Register</h1><br>
+    <hr>
     
-{% endblock %}
+    <form action="{% url 'register' %}" method="POST" class="container">
+        {% csrf_token %}
+
+        {{ form.as_p}}
+            
+        <br><br><input type="submit" value="submit" class="btn btn-secondary">
+    </form>
+    <p>Already have an account</p>
+    <a href="{% url 'login' %}">click here</a>
+</div><br><br>
+        
+    {% endblock %}
+   
