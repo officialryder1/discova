@@ -7,8 +7,8 @@
     <div class="container">
       <div class="row">
         <div class="display-header d-flex justify-content-between pb-3">
-          <h2 class="display-7 text-dark text-uppercase">Checkout </h2>
-          <p>Review Your Order</p>
+          <h2 class="display-7 text-dark text-uppercase">Billing Info </h2>
+          <p>Enter Your Payment Info</p>
         </div>
         <div class="container">
           <div class="row">
@@ -38,21 +38,18 @@
              <br><br><hr>
              <h3>Total: ${{total}}</h3>
              <br>
-             <form action="{% url 'billing'%}" method="POST">
-                {% csrf_token %}
-                <button class="btn btn-outline-danger">Continue To Billing</button><br>
-              </form>
             </div><br>
             <div class="col-md-6"><br>
               <div class="card-header">
-                Shipping Info
+                Billing_info
              </div>
              <div class="card-body">
-             <form action="" method="POST">
-              {% csrf_token %}
-              {{form.as_p}}
-              <button class="btn btn-success">Update</button>
-             </form> 
+              <form method="POST">
+                {% csrf_token %}
+                {{forms.as_p}}
+              </form>
+
+              <a href="" class="btn btn-outline-danger">Pay Now</a><br>
             </div>
           </div>
 

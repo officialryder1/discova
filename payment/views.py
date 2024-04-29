@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import ShippingAddress, Order, Transaction
-from .form import Shipping
+from .models import ShippingAddress, Order, Transaction, Completed_order
+from .form import Shipping, BillingForm
 from cart.cart import Cart
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View
 
 
 def payment_success(request):
@@ -58,3 +59,23 @@ def checkout(request):
     else:
         form = Shipping(instance=post)
     return render(request, 'payment/checkout.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total, 'form':form})
+
+def billing_info(request):
+    if request.POST:
+        cart = Cart(request)
+        cart_product = cart.get_probs
+        quantities = cart.get_quants
+        total = cart.cart_total
+
+        # check if user is login 
+        if request.user.is_authenticated:
+            # get billing form
+            billing_form = BillingForm()
+            return render(request, 'payment/billing_info.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total, 'shipping_info':request.POST, 'forms':billing_form})
+        else:
+            billing_form = BillingForm()
+            return render(request, 'payment/billing_info.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total, 'shipping_info':request.POST, 'forms':billing_form})
+        
+    else:
+        return redirect("home")
+

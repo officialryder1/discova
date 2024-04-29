@@ -85,15 +85,16 @@ WSGI_APPLICATION = 'vendor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# For Testing
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': BASE_DIR / 'db.sqlite3',
+}
 }
 
+# for production
 DATABASES['default'] = dj_database_url.parse(config("POSTGRES"))
-# postgres://discova_user:naB8ahxn1p2eLOefEnXA5saPkNGDjOIk@dpg-co81dpf79t8c73ersl1g-a.oregon-postgres.render.com/discova
 
 
 # Password validation
