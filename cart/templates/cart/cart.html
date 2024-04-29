@@ -74,15 +74,13 @@
         {% endfor %}
         <h3>Total: ${{ total }}</h3>
         <div class="container">
-        {% if user.is_authenticated %}
-          {% if shipping %}
-          <a href="{% url 'checkout' %}" class="btn btn-primary "> Check Out</a>
-          {% else %}
-          <a href="{% url 'checkout_form' %}" class="btn btn-primary "> Set Shipping</a>
-          {% endif  %}
+        
+        {% if shipping %}
+        <a href="{% url 'checkout' %}" class="btn btn-primary "> Check Out</a>
         {% else %}
-          <a href="{% url 'checkout_form' %}" class="btn btn-primary "> Set Shipping</a>
-        {% endif %}
+        <a href="{% url 'checkout_form' %}" class="btn btn-primary "> Set Shipping</a>
+        {% endif  %}
+        
         </div>
         
         {% else %}
