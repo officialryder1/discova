@@ -8,16 +8,20 @@ from django.contrib import messages
 
 
 def cart_info(request):
-    cart = Cart(request)
-    cart_product = cart.get_probs
-    quantities = cart.get_quants
-    total = cart.cart_total
-    user = request.user
-    if user.is_authenticated:
-        shipping = ShippingAddress.objects.get(user=request.user)
-        return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total, 'shipping':shipping})
-    else:
+    try:
+        cart = Cart(request)
+        cart_product = cart.get_probs
+        quantities = cart.get_quants
+        total = cart.cart_total
+        user = request.user
+        if user.is_authenticated:
+            shipping = ShippingAddress.objects.get(user=request.user)
+            return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total, 'shipping':shipping})
+        else:
+            return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total})
+    except:
         return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total})
+
 
 def add(request):
     cart = Cart(request)
