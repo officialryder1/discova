@@ -148,12 +148,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ACCESS_KEY_ID = config("MY_ACCESS_KEY")
-SECRET_ACCESS_KEY = config("MY_SECRET_KEY")
-STORAGE_BUCKET_NAME = config("MY_BUCKET_NAME")
-S3_SIGNATURE_NAME = config("MY_SIGNATURE_NAME")
-S3_REGION_NAME = config("MY_REGION_NAME")
-S3_FILE_OVERWRITE = False
-DEFAULT_ACL = None
-S3_VERIFY = True
+
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
