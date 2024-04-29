@@ -20,6 +20,10 @@ def cart_info(request):
         else:
             return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total})
     except:
+        cart = Cart(request)
+        cart_product = cart.get_probs
+        quantities = cart.get_quants
+        total = cart.cart_total
         return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total})
 
 
