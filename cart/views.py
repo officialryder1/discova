@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from store.models import Category, Product
+from payment.models import ShippingAddress
 from .models import *
 from .cart import Cart
 from django.http import JsonResponse
@@ -11,8 +12,12 @@ def cart_info(request):
     cart_product = cart.get_probs
     quantities = cart.get_quants
     total = cart.cart_total
-    
-    return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total})
+    user = request.user
+    if user.is_authenticated:
+        shipping = ShippingAddress.objects.get(user=request.user)
+        return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total, 'shipping':shipping})
+    else:
+        return render(request, 'cart/cart.html', {'cart_product':cart_product, 'quantities':quantities, 'total':total})
 
 def add(request):
     cart = Cart(request)

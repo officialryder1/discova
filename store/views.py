@@ -124,39 +124,48 @@ def register_user(request):
 
 @login_required(login_url="login")
 def upload_product(request):
-    if request.method == "POST":
-        form = UploadProduct(request.POST, request.FILES)
-        if form.is_valid():
-            author = form.save(commit=False)
-            user = User.objects.get(username=request.user)
-            merchant = Merchant.objects.get(author=user)
-            author.owner = merchant
-            author.save()
-            return redirect("home")
-    else:
-        form = UploadProduct()
+    try:
+        if request.method == "POST":
+            form = UploadProduct(request.POST, request.FILES)
+            if form.is_valid():
+                author = form.save(commit=False)
+                user = User.objects.get(username=request.user)
+                merchant = Merchant.objects.get(author=user)
+                author.owner = merchant
+                author.save()
+                return redirect("home")
+        else:
+            form = UploadProduct()
 
-    context = {'form':form}
-    return render(request, 'store/upload_product.html', context)
+        context = {'form':form}
+        return render(request, 'store/upload_product.html', context)
+    except:
+        return render(request, "store/404.html")
 
 @login_required(login_url="login")
 def update_product(request, pk):
-    post = Product.objects.get(id=pk)
-    if request.method =="POST":
-        form = UploadProduct(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
-        form = UploadProduct(instance=post)
-    
-    return render(request, 'store/update_product.html', {'form':form})
+    try:
+        post = Product.objects.get(id=pk)
+        if request.method =="POST":
+            form = UploadProduct(request.POST, instance=post)
+            if form.is_valid():
+                form.save()
+                return redirect('home')
+        else:
+            form = UploadProduct(instance=post)
+        
+        return render(request, 'store/update_product.html', {'form':form})
+    except:
+        return render(request, "store/404.html")
 
 @login_required(login_url="login")
 def delete(request, pk):
-    post = Product.objects.get(id=pk)
-    post.delete()
-    return redirect('home')
+    try:
+        post = Product.objects.get(id=pk)
+        post.delete()
+        return redirect('home')
+    except:
+        return render(request, "store/404.html")
 
 def Profile(request):
     user = request.user
